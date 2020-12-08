@@ -2,8 +2,7 @@ input = document.querySelector('pre').innerText.trim().split("\n")
 paths = [[1,1],[3,1],[5,1],[7,1],[1,2]]
 ans = [0,0,0,0,0]
 paths.forEach((p,i) => {
-    row = 0;
-    col = 0; 
+    row = col = 0
     while (row < input.length) {
         if (input[row][col%31] === "#") {ans[i]++;}
         col += p[0]
