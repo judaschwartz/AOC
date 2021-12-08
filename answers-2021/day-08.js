@@ -35,7 +35,7 @@ input.map(line=>{
   })
   numsMap={}
   nums.map((a,i) => {
-      numsMap[a.sort().join('')] = i
+    numsMap[a.sort().join('')] = i
   })
   ans2 += line.split(' | ')[1].split(' ').map(n => numsMap[n.split('').sort().join('')]).join('')*1
 })
