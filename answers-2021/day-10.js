@@ -5,22 +5,14 @@ ans = input.map(r=>{
     if (Array.isArray(open) && '[(<{'.includes(c)) {
       open.push(c)
     } else if (Array.isArray(open)) {
-      if (c === '}') {
-        if (open.pop() !== '{') {
-          open = 1197
-        }
-      } else if (c === ']') {
-        if (open.pop() !== '[') {
-          open = 57
-        }
-      } else if (c === ')') {
-        if (open.pop() !== '(') {
-          open = 3
-        }
-      } else if (c === '>') {
-        if (open.pop() !== '<') {
-          open = 25137
-        }
+      if (c === '}' && open.pop() !== '{') {
+        open = 1197
+      } else if (c === ']' && open.pop() !== '[') {
+        open = 57
+      } else if (c === ')' && open.pop() !== '(') {
+        open = 3
+      } else if (c === '>' && open.pop() !== '<') {
+        open = 25137
       }
     }
   })
