@@ -7,5 +7,5 @@ Open the browsers console on an [input page](https://adventofcode.com/2020/day/1
 and paste in this line
 ```
 url = window.location.pathname.split('/')
-eval(await fetch(`https://raw.githack.com/judaschwartz/AOC/master/answers-${url[1]}/day-${url[3].padStart(2, 0)}.js`).then(r=>r.text()))
+eval(await fetch(`https://raw.githubusercontent.com/judaschwartz/AOC/main/answers-${url[1]}/day-${url[3].padStart(2, 0)}.js`).then(r=>r.text()))
 ```
