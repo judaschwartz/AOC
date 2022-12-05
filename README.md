@@ -1,4 +1,4 @@
-# AOC
+# Advent of Code
 My solutions for [Advent of Code](https://adventofcode.com), there are probably more elegant solutions but ¯\\\_(ツ)\_/¯
 
 To print the answer for a days puzzle (might be helpful for checking your answer before submission)
