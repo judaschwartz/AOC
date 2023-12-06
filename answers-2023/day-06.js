@@ -1,9 +1,11 @@
 const input = document.querySelector('pre').innerText.trim().split("\n").map(l => l.split(/ +/g).slice(1))
 const wins = (t, d) => {
-  for (let h = 0; h < t; h++) {
-    if (h * (t-h) > d)
-      return t - (h * 2) + 1
+  let lo = 0, hi = t
+  while (1 + lo < hi) {
+    const mi = lo + ((hi - lo) >> 1)
+    mi * (t-mi) > d ? (hi = mi) : (lo = mi)
   }
+  return t - (hi * 2) + 1
 }
 let ans1 = 1
 for (let i = 0; i < input[0].length; i++) {
