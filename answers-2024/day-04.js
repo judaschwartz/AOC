@@ -1,11 +1,9 @@
 const input = document.querySelector('pre').innerText.trim().split("\n")
-const down = input.map((elem, i) => elem.split('').map((_, a) => input[a]?.[i]).join(''))
+const colsToRows = input.map((l, i) => l.split('').map((_, a) => input[a]?.[i]).join(''))
 const diag = getDiagonals(input)
-let ans1 = 0
-let ans2 = 0
-for (let grid of [input, down, diag]) {
-  grid.forEach(l => ans1 += l.split('XMAS').length -1)
-  grid.forEach(l => ans1 += l.split('SAMX').length -1)
+let ans1 = 0, ans2 = 0
+for (let grid of [input, colsToRows, diag]) {
+  grid.forEach(l => ans1 += l.split('XMAS').length + l.split('SAMX').length - 2)
 }
 input.map((l, i) => l.split('').map((c, j) => {
   if (c === 'A') {
@@ -15,19 +13,9 @@ input.map((l, i) => l.split('').map((c, j) => {
 console.log(`Answer 1: ${ans1}, Answer 2: ${ans2}`)
 
 function getDiagonals(arr) {
-  const rows = arr.length
-  const cols = Math.max(...arr.map(str => str.length))
-  const diag = []
-  for (let d = 0; d < rows + cols - 1; d++) {
-    const diagonal1 = [], diagonal2 = []
-    for (let row = 0; row < rows; row++) {
-      const col1 = d - row
-      if (col1 >= 0 && col1 < cols && arr[row][col1] !== undefined) diagonal1.push(arr[row][col1])
-      const col2 = d - (rows - 1 - row)
-      if (col2 >= 0 && col2 < cols && arr[row][col2] !== undefined) diagonal2.push(arr[row][col2])
-    }
-    if (diagonal1.length) diag.push(diagonal1.join(''))
-    if (diagonal2.length) diag.push(diagonal2.join(''))
+  const diag = [], cols = arr[0].length, rows = arr.length
+  for (let c = 0; c < cols + rows; c++) {
+    diag.push(...arr.reduce((a, r, i) => [a[0] + (r[c - (rows - i)] || ''), a[1] + (r[c - i] || '')], ['', '']))
   }
   return diag
 }
