@@ -9,3 +9,4 @@ and paste in this line
 url = window.location.pathname.split('/')
 eval(await fetch(`https://raw.githubusercontent.com/judaschwartz/AOC/main/answers-${url[1]}/day-${url[3].padStart(2, 0)}.js`).then(r=>r.text()))
 ```
+test
